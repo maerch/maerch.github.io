@@ -1,0 +1,105 @@
+---
+---
+
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic)
+
+body
+  color: rgba(0,0,0,0.8)
+  font-family: "Playfair Display", serif
+
+div#posting
+  position: relative
+  width: 80%
+  margin: 20px auto
+  padding: 0px 20px
+
+
+  @media (min-width: 600px)
+    width: 400px
+    margin: 20px auto
+
+  @media (min-width: 800px)
+    margin-left: 10%
+
+  @media (min-width: 1000px)
+    width: 600px
+    margin: 20px auto
+    
+
+  #header
+    margin: 100px -100px
+    text-align: center
+
+  div.img-container
+    text-align: center
+
+    img
+      @media (max-width: 600px)
+        width: 100%
+
+  div.sidenote
+    font-size: 0.9em
+    font-style: italic
+    @media (min-width: 800px)
+      position: absolute
+      width: 200px
+      right: -200px
+      margin-top: -100px
+
+
+  #disclaimer
+    margin: 50px 0px
+    width: 200px
+    position: absolute
+    right: 0px
+    text-align: right
+    font-size: 0.9em
+    font-style: italic
+a 
+  -webkit-transition: color .4s linear
+  -moz-transition: color .4s linear
+  -ms-transition: color .4s linear
+  -o-transition: color .4s linear
+  transition: color .4s linear
+  
+  &:visited, &
+    color: black
+
+  &:hover
+    color: #e06c1f
+
+header
+  text-align: center
+
+h1
+  font-style: italic
+  font-weight: 700
+  font-family: "Playfair Display", serif
+  font-size: 4em
+  &.posting
+    font-size: 2em
+    width: 60%
+    margin: 20px auto
+
+table#postings
+  max-width: 600px
+  margin: 0px auto
+
+
+  tr.posting
+
+    td
+      padding: 5px
+      font: normal 400 16px/1 "Playfair Display", serif
+
+    td.date
+      width: 33%
+      text-align: right
+      vertical-align: top
+
+    td.title
+      width: 66%
+      text-align: left
+
+
+
