@@ -1,5 +1,6 @@
 ---
 title: Land Of Types
+tldr: history of types from the dinosaurs up to now
 layout: posting
 ---
 
