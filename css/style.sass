@@ -2,10 +2,13 @@
 ---
 
 @import url(http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic)
+@import url(http://fonts.googleapis.com/css?family=Domine:400,700)
 
 body
   color: rgba(0,0,0,0.8)
   font-family: "Playfair Display", serif
+  font-family: 'Domine', serif
+  line-height: 145%
 
 div#posting
   position: relative
@@ -15,7 +18,7 @@ div#posting
 
 
   @media (min-width: 600px)
-    width: 400px
+    width: 500px
 
   @media (min-width: 800px)
     width: 600px
@@ -28,8 +31,14 @@ div#posting
     text-align: center
 
     img
-      @media (max-width: 600px)
-        width: 100%
+      width: 100%
+
+  div.float-right
+    @media (min-width: 600px)
+      float: right
+      width: 300px
+      margin-right: -50px
+
 
   div.sidenote
     font-size: 0.9em
