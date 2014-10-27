@@ -16,7 +16,7 @@ Back then, Artificial Intelligence was supposed to be the next big thing. Everyo
 
 Right in the middle of all brainy ambitions were the neural nets -- the most direct approach to mimic the brain -- with its most basic building block the Perceptron. It was as basic as its role model, the neuron. I am not going to try to explain a [neuron](http://en.wikipedia.org/wiki/Neuron) at all (I don't want to be killed by a raging biologist), but I will give you a image you can work with. We are actually talking about a kraken which has two types of tentacles. A bunch of them are called dendrites and the biggest and longest of them is the axon. The dendrites get electrical pulses continuously from surrounding krakens and if they together exceed a certain threshold the axon will fire a pulse to someone else. That's how our brain works. I swear. The only thing is that there are 100 billion kraken in your head. Why does this work? How can we make banana bread with only these? Nobody really knows. That's the mystery of our brains and why we still do not have robots which try to kill us.
 
-<div class="img-container"><img src="/img/2014-10-22-perceptron/kraken.png" alt="The kraken with its dendrites and axon."></img></div>
+<div class="img-container"><img src="{{site.url}}/img/2014-10-22-perceptron/kraken.png" alt="The kraken with its dendrites and axon."></img></div>
 
 A Perceptron is exactly like a kraken, just with a touch of math. It gets some input to its dendrite-tentacles, adds them up and outputs +1 if they exceed a threshold and -1 otherwise. That's it. Although a single Perceptron seems to be pretty dumb, it is remarkable what you can achieve with this simple concept.
 
@@ -30,22 +30,25 @@ If you have studied some math, you have maybe spotted something very simliar. Ha
 
   $$ \sum_{i=1}^{n} w_i x_i + b = 0 $$
 
-<div class="img-container float-right"><img src="/img/2014-10-22-perceptron/wxb.png" width="300px" alt="Linear function to classify them all"></img></div>
+<div class="img-container float-right"><img src="{{site.url}}/img/2014-10-22-perceptron/wxb.png" width="300px" alt="Linear function to classify them all"></img></div>
 
 This is a special form to represent a hyperplane in space. Since not everybody can think in multiple dimensions like Stephen Hawking, we are going to choose the special case of $$n=2$$, which is representing a line on a two-dimensional plane. There is also an easy way to visualize this formula. The vector $$\vec{w} = (w_1, w_2)$$ is perpendicular to our line, so by pointing somewhere in space we determine the slope and by adding a bias we manipulate the intersection between the line and the axes. Every point $$\vec{x} = (x_1, x_2)$$ that satisfies this equation is excatly on our line. The other interesting property is that every point which yields a positive value instead zero on the left side of the equation, is above it and vice versa for the negative case.
 
-If you look closely, you might see that our Perceptron is excatly this representation with $$b = -\theta$$.
+If you look closely, you might see that our Perceptron isn't so much different. Rearrange the formula, think of $$\theta$$ as $$-b$$, replace $$>$$ with $$=$$ and you will see that our Perceptron is nothing else than a line in space.
 
   $$ w_1 x_1 + w_2 x_2 - \theta  = 0 $$
 
-In case you feel to unfamiliar with this representation, you can easily rearrange it to the more common "slope-intercept" form $$mx + b = y$$. Feel free to do this in your spare time. I will give you a hint how it will look in the end, though.
+By the way: In case you feel too unfamiliar with this representation, you can easily rearrange it to the more common "slope-intercept" form $$mx + b = y$$. Feel free to do this in your spare time. I will give you a hint how it will look in the end, though.
 
 $$\underbrace{-\frac{w_1}{w_2}}_{m} \overbrace{x_1}^{x} + \underbrace{\frac{\theta}{w_2}}_{b} = \overbrace{x_2}^{y}$$ 
- 
-So basically, our two-armed kraken is a linear classifier. The weights and the threshold determine which function it represents to separate the space into two classes.
 
-<div class="img-container float-left"><img src="/img/2014-10-22-perceptron/dangerous-games.png" width="300px" alt="Playing ancient, but danagerous games"></img></div>
-Let me come up with another ridiculous, but tremendously helpful and life-saving example. You are playing an ancient game that is actually older than chess and go together. It is so old that nobody can remember its name anymore. The board is a two-dimensional field and there exists a line which splits the board in two. You do not know anything about this line except that it is a straight line. From time to time you get some hints. They fall as tokens from the sky on your board and in addition to its position they have on of two colors which indicates where the token has landed -- red if it is below the line and green if it is above. Your goal is to approximate the line as good as you can, so if a grey tokens falls down you are able to paint it either red or green. That's it. Have I mentioned that the world explodes with a big _bang_ if you paint it in the wrong color? That is maybe one of the reasons nobody plays it anymore. You are forced to play it anyway -- by some masochistic alien from the delta quadrant.
+So basically, our two-armed kraken is a linear classifier by exploiting the "intersting property" of this hyperplane representation. The weights and the threshold determine which function it represents to separate the space into two classes.
+
+
+<div class="img-container float-left"><img src="{{site.url}}/img/2014-10-22-perceptron/dangerous-games.png" width="300px" alt="Playing ancient, but danagerous games"></img></div>
+Now the more important question: So what?
+
+Let me come up with another ridiculous, but tremendously helpful and life-saving example. You are playing an ancient game that is actually older than chess and go together. It is so old that nobody can remember its name anymore. The board is a two-dimensional field and there exists a line which splits the board in two. You do not know anything about this line except that it is a straight line. From time to time you get some hints. They fall as tokens from the sky on your board and in addition to its position they have one of two colors which indicates where the token has landed -- red if it is below the line and green if it is above. Your goal is to approximate the line as good as you can, so if a grey tokens falls down you are able to paint it either red or green. That's it. Have I mentioned that the world explodes with a big _bang_ if you paint it in the wrong color? That is maybe one of the reasons nobody plays it anymore. You are forced to play it anyway -- by some masochistic alien from the delta quadrant.
 
 But no worries. Your time has come to use your secret weapon. 
 
@@ -67,9 +70,9 @@ You will not apply this learning rule once for every point. In fact several iter
 
 I might hear you asking: When shall we stop? Will it run forever? Excellent questions. If (and only if) the "real" function we have to learn is linear, some crazy math can proof that this rule will converge -- i.e. stop after a finite number of iterations with 0 errors on the training set. Of course we can never proof that we will never make an error on unseen data since we have never seen the "real" function. Now you can see why these aliens are notorious masochist. However, according to the seen data, we have done the best we could do to save the world.
 
-If you ever come up with a nonlinear game, don't miss part II: "How a mob of kraken defeated a nonlineaer attack from outerspace." Coming soon.
+If you ever come up against the nonlinear sequel of this game, don't miss part II of this posting: "How a mob of kraken defeated a nonlineaer attack from outerspace." Coming soon.
 
-And if you are still confused, I set up a simulation of this game where you can safely play around without the world being at stake. Add random data to the canvas, press learn and move the slider to explore the kraken's state after each iteration. And do not forget: orange points mean death to all of us!
+And if you are not completely convinced by this approach, I set up a [simulation ]({{ site.url }}/static/vpercp) of this game where you can safely play around without the world being at stake. Add random data to the canvas, press learn and move the slider to explore the kraken's state after each iteration. And do not forget: orange points mean death to all of us!
 
 <script type="text/javascript"
         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
