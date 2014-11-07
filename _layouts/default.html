@@ -19,6 +19,16 @@
   
   <body>
 
+  <div id="cordon"></div>
+  <script>
+    var cordonEl = document.getElementById("cordon");
+    for(var i=0; i<10; i++) {
+      var div = document.createElement("div");
+      div.className = "cell";
+      cordonEl.appendChild(div);
+    }
+  </script>
+
   <div id="links">
     <a href="https://github.com/maerch"><img src="/img/github.gif" /></a>
     <a href="https://twitter.com/maerch"><img src="/img/twitter.gif" /></a>

@@ -4,6 +4,8 @@
 @import url(http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic)
 @import url(http://fonts.googleapis.com/css?family=Domine:400,700)
 
+$cordon-colors: 10
+
 body
   color: rgba(0,0,0,0.8)
   font-family: "Playfair Display", serif
@@ -128,4 +130,19 @@ table#postings
   text-align: center
   margin: 40px auto 0px auto
 
+#cordon
+  position: absolute
+  top:      0px
+  left:     0px
+  right:    0px
+  height:   5px
+  background-color: red
 
+
+  .cell
+    float: left
+    height: 100%
+    width:  unquote($cordon-colors + "%")
+    @for $i from 1 through 10
+      &:nth-child(#{$i})
+        background-color: rgba(random(255), random(255), random(255), 0.5)
