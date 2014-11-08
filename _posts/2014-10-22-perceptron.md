@@ -26,13 +26,13 @@ Let's put this into a formula.
 
 Our kraken gets $$n$$ numbers as input $$(x_1, \cdots, x_n)$$, multiplies them by some weird $$w_i$$ and tests if the sum is greater than the threshold $$\theta$$. The $$w$$s are actually weights and they are like the diameter of the tentacle which determines how much electricity will be carried. The smaller the weight, the less impact this particular tentacle has on the sum, and with a negative tentacle diameter -- I don't want to even think about that.
 
-If you have studied some math, you have maybe spotted something very simliar. Have you ever seen anything like this?
+If you have studied some math, you have maybe spotted something very similiar. Have you ever seen anything like this?
 
   $$ \sum_{i=1}^{n} w_i x_i + b = 0 $$
 
 <div class="img-container float-right"><img src="{{site.url}}/img/2014-10-22-perceptron/wxb.png" width="300px" alt="Linear function to classify them all"></img></div>
 
-This is a special form to represent a hyperplane in space. Since not everybody can think in multiple dimensions like Stephen Hawking, we are going to choose the special case of $$n=2$$, which is representing a line on a two-dimensional plane. There is also an easy way to visualize this formula. The vector $$\vec{w} = (w_1, w_2)$$ is perpendicular to our line, so by pointing somewhere in space we determine the slope and by adding a bias we manipulate the intersection between the line and the axes. Every point $$\vec{x} = (x_1, x_2)$$ that satisfies this equation is excatly on our line. The other interesting property is that every point which yields a positive value instead zero on the left side of the equation, is above it and vice versa for the negative case.
+This is a special form to represent a hyperplane in space. Since not everybody can think in multiple dimensions like Stephen Hawking, we are going to choose the special case of $$n=2$$, which is representing a line on a two-dimensional plane. There is also an easy way to visualize this formula. The vector $$\vec{w} = (w_1, w_2)$$ is perpendicular to our line, so by pointing somewhere in space we determine the slope and by adding a bias we manipulate the intersection between the line and the axes. Every point $$\vec{x} = (x_1, x_2)$$ that satisfies this equation is exactly on our line. The other interesting property is that every point which yields a positive value instead zero on the left side of the equation, is above it and vice versa for the negative case.
 
 If you look closely, you might see that our Perceptron isn't so much different. Rearrange the formula, think of $$\theta$$ as $$-b$$, replace $$>$$ with $$=$$ and you will see that our Perceptron is nothing else than a line in space.
 
@@ -42,10 +42,10 @@ By the way: In case you feel too unfamiliar with this representation, you can ea
 
 $$\underbrace{-\frac{w_1}{w_2}}_{m} \overbrace{x_1}^{x} + \underbrace{\frac{\theta}{w_2}}_{b} = \overbrace{x_2}^{y}$$ 
 
-So basically, our two-armed kraken is a linear classifier by exploiting the "intersting property" of this hyperplane representation. The weights and the threshold determine which function it represents to separate the space into two classes.
+So basically, our two-armed kraken is a linear classifier by exploiting the "interesting property" of this hyperplane representation. The weights and the threshold determine which function it represents to separate the space into two classes.
 
 
-<div class="img-container float-left"><img src="{{site.url}}/img/2014-10-22-perceptron/dangerous-games.png" width="300px" alt="Playing ancient, but danagerous games"></img></div>
+<div class="img-container float-left"><img src="{{site.url}}/img/2014-10-22-perceptron/dangerous-games.png" width="300px" alt="Playing ancient, but dangerous games"></img></div>
 Now the more important question: So what?
 
 Let me come up with another ridiculous, but tremendously helpful and life-saving example. You are playing an ancient game that is actually older than chess and go together. It is so old that nobody can remember its name anymore. The board is a two-dimensional field and there exists a line which splits the board in two. You do not know anything about this line except that it is a straight line. From time to time you get some hints. They fall as tokens from the sky on your board and in addition to its position they have one of two colors which indicates where the token has landed -- red if it is below the line and green if it is above. Your goal is to approximate the line as good as you can, so if a grey tokens falls down you are able to paint it either red or green. That's it. Have I mentioned that the world explodes with a big _bang_ if you paint it in the wrong color? That is maybe one of the reasons nobody plays it anymore. You are forced to play it anyway -- by some masochistic alien from the delta quadrant.
@@ -70,7 +70,7 @@ You will not apply this learning rule once for every point. In fact several iter
 
 I might hear you asking: When shall we stop? Will it run forever? Excellent questions. If (and only if) the "real" function we have to learn is linear, some crazy math can proof that this rule will converge -- i.e. stop after a finite number of iterations with 0 errors on the training set. Of course we can never proof that we will never make an error on unseen data since we have never seen the "real" function. Now you can see why these aliens are notorious masochist. However, according to the seen data, we have done the best we could do to save the world.
 
-If you ever come up against the nonlinear sequel of this game, don't miss part II of this posting: "How a mob of kraken defeated a nonlineaer attack from outerspace." Coming soon.
+If you ever come up against the nonlinear sequel of this game, don't miss part II of this posting: "How a mob of kraken defeated a nonlinear attack from outerspace." Coming soon.
 
 And if you are not completely convinced by this approach, I set up a [simulation ]({{ site.url }}/static/vpercp) of this game where you can safely play around without the world being at stake. Add random data to the canvas, press learn and move the slider to explore the kraken's state after each iteration. And do not forget: orange points mean death to all of us!
 
