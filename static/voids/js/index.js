@@ -12,12 +12,13 @@ function Boid(id) {
 
 module.exports = Boid
 
-},{"./vector":4}],2:[function(require,module,exports){
+},{"./vector":5}],2:[function(require,module,exports){
 var debounce = require('debounce');
 var ticker   = require('ticker');
 
 var Vector   = require('./vector.js');
 var Boid     = require('./boid.js');
+var Quadtree = require('./quadtree.js');
 
 var rules    = require('./rules.js');
 
@@ -97,8 +98,8 @@ var cohesion          = true;
 var alignment         = true;
 var separation        = true;
 
-var predatorsOnCanvas = false;
-var foodOnCanvas      = false;
+var predatorsOnCanvas = true;
+var foodOnCanvas      = true;
 
 var pause      = false;
 var tracking   = false;
@@ -195,6 +196,7 @@ var drawBoid = function(boid) {
   ctx.shadowOffsetY = 0;
   ctx.strokeStyle = '#ff00ff';
   ctx.stroke();
+  ctx.closePath();
 }
 
 var pattern;
@@ -226,13 +228,16 @@ var pulse = 0;
 ticker(window, fps).on('tick', function() {
   if(pause) return;
 
+  var quadtree = new Quadtree(0, 0, canvas.width, canvas.height);
+  boids.forEach(function(boid) {
+    quadtree.insert({x: boid.loc.x, y: boid.loc.y, boid: boid});
+  });
+
   if(predatorsOnCanvas) {
     predators.forEach(function(predator) {
       var apply = [];
-      var neighborPredators = rules.neighbors(predator, predators, 50);
-      var neighborBoids     = rules.neighbors(predator, boids, 150);
+      var neighborBoids     = rules.neighbors(predator, quadtree, 150);
 
-      apply.push(rules.separation(predator, neighborPredators));
       apply.push(rules.cohesion(predator, neighborBoids));
 
       apply.forEach(function(rule) {
@@ -257,8 +262,8 @@ ticker(window, fps).on('tick', function() {
   boids.forEach(function(boid, i) {
 
     var apply = [];
-    var neighbors50  = rules.neighbors(boid, boids, 50);
-    var neighbors150 = rules.neighbors(boid, boids, 150);
+    var neighbors50  = rules.neighbors(boid, quadtree, 50);
+    var neighbors150 = rules.neighbors(boid, quadtree, 150);
 
     if(cohesion)
       apply.push(rules.cohesion(boid, neighbors50));
@@ -269,7 +274,7 @@ ticker(window, fps).on('tick', function() {
 
     if(scatter) {
       if(scatterPos.distanceTo(boid.loc) < 200) 
-      apply.push(rules.repulsion(boid, scatterPos, -20));
+        apply.push(rules.repulsion(boid, scatterPos, -20));
     }
 
     if(foodOnCanvas) {
@@ -391,7 +396,89 @@ $("#tracking-trigger").on('click', function() {
   tracking = !tracking;
 });
 
-},{"./boid.js":1,"./rules.js":3,"./vector.js":4,"debounce":6,"ticker":8}],3:[function(require,module,exports){
+},{"./boid.js":1,"./quadtree.js":3,"./rules.js":4,"./vector.js":5,"debounce":7,"ticker":9}],3:[function(require,module,exports){
+function Quadtree(x1, y1, x2, y2, level) {
+  this.x1 = x1;
+  this.x2 = x2;
+  this.y1 = y1;
+  this.y2 = y2;
+
+  this.objects = [];
+  this.nodes   = [];
+  this.leaf    = true;
+
+  this.level   = level || 1;
+}
+
+Quadtree.prototype = {
+  MAX_OBJECTS: 5,
+  MAX_LEVEL:   10
+}
+
+Quadtree.prototype.insert = function(object) {
+  var x = object.x;
+  var y = object.y;
+  if(isNaN(x) || isNaN(y)) return;
+
+  if(this.leaf) {
+    if(this.objects.length<this.MAX_OBJECTS || this.level === this.MAX_LEVEL) {
+      this.objects.push(object);
+      return this;
+    } else {
+      this.split();
+      return this.insert(object);
+    }
+  } else {
+    var upper = (y<(this.y2-this.y1)/2);
+    var lower = !upper;
+    var left  = (x<(this.x2-this.x1)/2);
+    var right = !left;
+    if(upper && left)  return this.nodes[0].insert(object);
+    if(upper && right) return this.nodes[1].insert(object);
+    if(lower && left)  return this.nodes[2].insert(object);
+    if(lower && right) return this.nodes[3].insert(object);
+  }
+}
+
+Quadtree.prototype.split = function() {
+  var x1 = this.x1, x2 = this.x2, y1 = this.y1, y2 = this.y2, level = this.level;
+
+  this.leaf     = false;
+  this.nodes[0] = new Quadtree(x1,        y1,        (x2-x1)/2, (y2-y1)/2, level+1);
+  this.nodes[1] = new Quadtree((x2-x1)/2, y1,         x2,       (y2-y1)/2, level+1);
+  this.nodes[2] = new Quadtree(x1,        (y2-y1)/2, (x2-x1)/2, y2,        level+1);
+  this.nodes[3] = new Quadtree((x2-x1)/2, (y2-y1)/2, x2,        y2,        level+1);
+
+  this.objects.forEach(function(object) {
+    this.insert(object);
+  }.bind(this));
+  this.objects.length = 0;
+}
+
+Quadtree.prototype.visit = function(callback) {
+  if(!callback(this.objects, this.x1, this.y1, this.x2, this.y2) && !this.leaf) {
+    this.nodes.forEach(function(node) {
+      node.visit(callback);
+    });
+  }
+}
+
+Quadtree.prototype.retrieve = function(x1, y1, x2, y2) {
+  var found = [];
+  this.visit(function(objects, qx1, qy1, qx2, qy2) {
+    objects.forEach(function(o) {
+      if((o.x >= x1) && (o.x < x2) && (o.y >= y1) && (o.y < y2)) {
+        found.push(o);
+      }
+    });
+    return qx1 >= x2 || qy1 >= y2 || qx2 < x1 || qy2 < y1;
+  });
+  return found;
+}
+
+module.exports = Quadtree;
+
+},{}],4:[function(require,module,exports){
 var Vector = require('./vector.js');
 
 var rules = {};
@@ -410,9 +497,16 @@ rules.center = function(boid, boids) {
   }
 }
 
-rules.neighbors = function(boid, boids, radius) {
+rules.neighbors = function(boid, quadtree, radius) {
   var neighbors = [];
-  boids.forEach(function(current) {
+
+  var x1 = boid.loc.x - radius;
+  var y1 = boid.loc.y - radius;
+  var x2 = boid.loc.x + radius;
+  var y2 = boid.loc.y + radius;
+
+  quadtree.retrieve(x1, y1, x2, y2).forEach(function(current) {
+    current = current.boid;
     if(current.id!==boid.id) {
       var distance = current.loc.distanceTo(boid.loc);
       if(distance < radius) {
@@ -473,7 +567,7 @@ rules.repulsion = function(boid, repulsedByVec, factor) {
 
 module.exports = rules;
 
-},{"./vector.js":4}],4:[function(require,module,exports){
+},{"./vector.js":5}],5:[function(require,module,exports){
 
 function Vector(x, y) {
   this.x = x;
@@ -525,7 +619,7 @@ function Vector(x, y) {
 
 module.exports = Vector
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -828,7 +922,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -883,14 +977,14 @@ module.exports = function debounce(func, wait, immediate){
   };
 };
 
-},{"date-now":7}],7:[function(require,module,exports){
+},{"date-now":8}],8:[function(require,module,exports){
 module.exports = Date.now || now
 
 function now() {
     return new Date().getTime()
 }
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function (global){
 var EventEmitter = require('events').EventEmitter
 
@@ -949,4 +1043,4 @@ function ticker(element, rate, limit) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"events":5}]},{},[2]);
+},{"events":6}]},{},[2]);

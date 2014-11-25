@@ -17,9 +17,16 @@ rules.center = function(boid, boids) {
   }
 }
 
-rules.neighbors = function(boid, boids, radius) {
+rules.neighbors = function(boid, quadtree, radius) {
   var neighbors = [];
-  boids.forEach(function(current) {
+
+  var x1 = boid.loc.x - radius;
+  var y1 = boid.loc.y - radius;
+  var x2 = boid.loc.x + radius;
+  var y2 = boid.loc.y + radius;
+
+  quadtree.retrieve(x1, y1, x2, y2).forEach(function(current) {
+    current = current.boid;
     if(current.id!==boid.id) {
       var distance = current.loc.distanceTo(boid.loc);
       if(distance < radius) {
