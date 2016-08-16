@@ -201,7 +201,7 @@ var drawBoid = function(boid) {
 
 var pattern;
 var img = new Image();
-img.src = 'http://subtlepatterns.com/patterns/subtle_carbon.png'
+img.src = './img/subtle_carbon.png'
 
 img.onload = function(){
     pattern = ctx.createPattern(img, 'repeat'); 
