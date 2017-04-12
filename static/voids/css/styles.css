@@ -2,8 +2,9 @@
  * http://bitters.bourbon.io
  * Copyright 2013-2014 thoughtbot, inc.
  * MIT License */
-/* line 1, ./app/vendor/bitters/extends/button */
-button, input[type="submit"] {
+/* line 1, /Users/maerch/Git/voids/app/vendor/bitters/extends/_button.scss */
+button,
+input[type="submit"] {
   -webkit-font-smoothing: antialiased;
   background-color: #477DCA;
   border-radius: 3px;
@@ -14,16 +15,18 @@ button, input[type="submit"] {
   line-height: 1;
   padding: 0.75em 1em;
   text-decoration: none; }
-  /* line 13, ./app/vendor/bitters/extends/button */
-  button:hover, input[type="submit"]:hover {
+  /* line 13, /Users/maerch/Git/voids/app/vendor/bitters/extends/_button.scss */
+  button:hover,
+  input[type="submit"]:hover {
     background-color: #2c5999;
     color: white; }
-  /* line 18, ./app/vendor/bitters/extends/button */
-  button:disabled, input[type="submit"]:disabled {
+  /* line 18, /Users/maerch/Git/voids/app/vendor/bitters/extends/_button.scss */
+  button:disabled,
+  input[type="submit"]:disabled {
     cursor: not-allowed;
     opacity: 0.5; }
 
-/* line 1, ./app/vendor/bitters/typography */
+/* line 1, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 body {
   -webkit-font-feature-settings: "kern", "liga", "frac", "pnum";
   -moz-font-feature-settings: "kern", "liga", "frac", "pnum";
@@ -36,56 +39,61 @@ body {
   font-size: 1em;
   line-height: 1.5; }
 
-/* line 16, ./app/vendor/bitters/typography */
-h1, h2, h3, h4, h5, h6 {
+/* line 11, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   line-height: 1.25;
   margin: 0; }
 
-/* line 22, ./app/vendor/bitters/typography */
+/* line 22, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 h1 {
   font-size: 2.25em; }
 
-/* line 26, ./app/vendor/bitters/typography */
+/* line 26, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 h2 {
   font-size: 2em; }
 
-/* line 30, ./app/vendor/bitters/typography */
+/* line 30, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 h3 {
   font-size: 1.75em; }
 
-/* line 34, ./app/vendor/bitters/typography */
+/* line 34, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 h4 {
   font-size: 1.5em; }
 
-/* line 38, ./app/vendor/bitters/typography */
+/* line 38, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 h5 {
   font-size: 1.25em; }
 
-/* line 42, ./app/vendor/bitters/typography */
+/* line 42, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 h6 {
   font-size: 1em; }
 
-/* line 46, ./app/vendor/bitters/typography */
+/* line 46, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 p {
   margin: 0 0 0.75em; }
 
-/* line 50, ./app/vendor/bitters/typography */
+/* line 50, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 a {
   -webkit-transition: color 0.1s linear;
   -moz-transition: color 0.1s linear;
   transition: color 0.1s linear;
   color: #477DCA;
   text-decoration: none; }
-  /* line 55, ./app/vendor/bitters/typography */
+  /* line 55, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
   a:hover {
     color: #2c5999; }
-  /* line 59, ./app/vendor/bitters/typography */
+  /* line 59, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
   a:active, a:focus {
     color: #2c5999;
     outline: none; }
 
-/* line 65, ./app/vendor/bitters/typography */
+/* line 65, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 hr {
   border-bottom: 1px solid #DDD;
   border-left: none;
@@ -93,52 +101,57 @@ hr {
   border-top: none;
   margin: 1.5em 0; }
 
-/* line 74, ./app/vendor/bitters/typography */
-img, picture {
+/* line 73, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
+img,
+picture {
   margin: 0;
   max-width: 100%; }
 
-/* line 79, ./app/vendor/bitters/typography */
+/* line 79, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 blockquote {
   border-left: 2px solid #DDD;
   color: #595959;
   margin: 1.5em 0;
   padding-left: 0.75em; }
 
-/* line 86, ./app/vendor/bitters/typography */
+/* line 86, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
 cite {
   color: #737373;
   font-style: italic; }
-  /* line 90, ./app/vendor/bitters/typography */
+  /* line 90, /Users/maerch/Git/voids/app/vendor/bitters/_typography.scss */
   cite:before {
     content: "\2014 \00A0"; }
 
-/* line 1, ./app/vendor/bitters/forms */
+/* line 1, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
 fieldset {
   background: #f7f7f7;
   border: 1px solid #DDD;
   margin: 0 0 0.75em 0;
   padding: 1.5em; }
 
-/* line 10, ./app/vendor/bitters/forms */
-input, label, select {
+/* line 8, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
+input,
+label,
+select {
   display: block;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-size: 1em; }
 
-/* line 16, ./app/vendor/bitters/forms */
+/* line 16, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
 label {
   font-weight: bold;
   margin-bottom: 0.375em; }
-  /* line 20, ./app/vendor/bitters/forms */
+  /* line 20, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
   label.required:after {
     content: "*"; }
-  /* line 24, ./app/vendor/bitters/forms */
+  /* line 24, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
   label abbr {
     display: none; }
 
-/* line 29, ./app/vendor/bitters/forms */
-textarea, input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="time"], input[type="week"], select[multiple=multiple] {
+/* line 29, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
+textarea,
+input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="time"], input[type="week"],
+select[multiple=multiple] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -154,20 +167,24 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   margin-bottom: 0.75em;
   padding: 0.5em 0.5em;
   width: 100%; }
-  /* line 42, ./app/vendor/bitters/forms */
-  textarea:hover, input[type="email"]:hover, input[type="number"]:hover, input[type="password"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="text"]:hover, input[type="url"]:hover, input[type="color"]:hover, input[type="date"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="month"]:hover, input[type="time"]:hover, input[type="week"]:hover, select[multiple=multiple]:hover {
+  /* line 42, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
+  textarea:hover,
+  input[type="email"]:hover, input[type="number"]:hover, input[type="password"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="text"]:hover, input[type="url"]:hover, input[type="color"]:hover, input[type="date"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="month"]:hover, input[type="time"]:hover, input[type="week"]:hover,
+  select[multiple=multiple]:hover {
     border-color: #c4c4c4; }
-  /* line 46, ./app/vendor/bitters/forms */
-  textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, select[multiple=multiple]:focus {
+  /* line 46, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
+  textarea:focus,
+  input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus,
+  select[multiple=multiple]:focus {
     border-color: #477DCA;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(55, 112, 192, 0.7);
     outline: none; }
 
-/* line 53, ./app/vendor/bitters/forms */
+/* line 53, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
 textarea {
   resize: vertical; }
 
-/* line 57, ./app/vendor/bitters/forms */
+/* line 57, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
 input[type="search"] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -175,23 +192,24 @@ input[type="search"] {
   -o-appearance: none;
   appearance: none; }
 
-/* line 62, ./app/vendor/bitters/forms */
-input[type="checkbox"], input[type="radio"] {
+/* line 61, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
+input[type="checkbox"],
+input[type="radio"] {
   display: inline;
   margin-right: 0.375em; }
 
-/* line 67, ./app/vendor/bitters/forms */
+/* line 67, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
 input[type="file"] {
   padding-bottom: 0.75em;
   width: 100%; }
 
-/* line 72, ./app/vendor/bitters/forms */
+/* line 72, /Users/maerch/Git/voids/app/vendor/bitters/_forms.scss */
 select {
   margin-bottom: 1.5em;
   max-width: 100%;
   width: auto; }
 
-/* line 1, ./app/vendor/bitters/tables */
+/* line 1, /Users/maerch/Git/voids/app/vendor/bitters/_tables.scss */
 table {
   -webkit-font-feature-settings: "kern", "liga", "tnum";
   -moz-font-feature-settings: "kern", "liga", "tnum";
@@ -202,41 +220,45 @@ table {
   table-layout: fixed;
   width: 100%; }
 
-/* line 9, ./app/vendor/bitters/tables */
+/* line 9, /Users/maerch/Git/voids/app/vendor/bitters/_tables.scss */
 th {
   border-bottom: 1px solid #b7b7b7;
   font-weight: bold;
   padding: 0.75em 0;
   text-align: left; }
 
-/* line 16, ./app/vendor/bitters/tables */
+/* line 16, /Users/maerch/Git/voids/app/vendor/bitters/_tables.scss */
 td {
   border-bottom: 1px solid #DDD;
   padding: 0.75em 0; }
 
-/* line 23, ./app/vendor/bitters/tables */
-tr, td, th {
+/* line 21, /Users/maerch/Git/voids/app/vendor/bitters/_tables.scss */
+tr,
+td,
+th {
   vertical-align: middle; }
 
-/* line 2, ./app/vendor/bitters/lists */
-ul, ol {
+/* line 1, /Users/maerch/Git/voids/app/vendor/bitters/_lists.scss */
+ul,
+ol {
   margin: 0;
   padding: 0;
   list-style-type: none; }
 
-/* line 20, ./app/vendor/bitters/lists */
+/* line 20, /Users/maerch/Git/voids/app/vendor/bitters/_lists.scss */
 dl {
   margin-bottom: 0.75em; }
-  /* line 23, ./app/vendor/bitters/lists */
+  /* line 23, /Users/maerch/Git/voids/app/vendor/bitters/_lists.scss */
   dl dt {
     font-weight: bold;
     margin-top: 0.75em; }
-  /* line 28, ./app/vendor/bitters/lists */
+  /* line 28, /Users/maerch/Git/voids/app/vendor/bitters/_lists.scss */
   dl dd {
     margin: 0; }
 
-/* line 2, ./app/vendor/bitters/buttons */
-button, input[type="submit"] {
+/* line 1, /Users/maerch/Git/voids/app/vendor/bitters/_buttons.scss */
+button,
+input[type="submit"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -248,7 +270,7 @@ button, input[type="submit"] {
   vertical-align: middle;
   white-space: nowrap; }
 
-/* line 1, /Users/maerch/Git/boids/app/sass/switch */
+/* line 1, /Users/maerch/Git/voids/app/sass/switch.scss */
 .label-switch {
   align-self: center;
   border-radius: 32px;
@@ -261,10 +283,10 @@ button, input[type="submit"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  /* line 20, /Users/maerch/Git/boids/app/sass/switch */
+  /* line 20, /Users/maerch/Git/voids/app/sass/switch.scss */
   .label-switch input[type="checkbox"] {
     display: none; }
-    /* line 23, /Users/maerch/Git/boids/app/sass/switch */
+    /* line 23, /Users/maerch/Git/voids/app/sass/switch.scss */
     .label-switch input[type="checkbox"] + .checkbox {
       background: #e5e5e5;
       border: none;
@@ -282,7 +304,7 @@ button, input[type="submit"] {
       -webkit-transition: all 0.3s ease;
       -moz-transition: all 0.3s ease;
       transition: all 0.3s ease; }
-      /* line 37, /Users/maerch/Git/boids/app/sass/switch */
+      /* line 37, /Users/maerch/Git/voids/app/sass/switch.scss */
       .label-switch input[type="checkbox"] + .checkbox:before {
         background: white;
         border-radius: 32px;
@@ -306,7 +328,7 @@ button, input[type="submit"] {
         -ms-transform: scale(1);
         -o-transform: scale(1);
         transform: scale(1); }
-      /* line 50, /Users/maerch/Git/boids/app/sass/switch */
+      /* line 50, /Users/maerch/Git/voids/app/sass/switch.scss */
       .label-switch input[type="checkbox"] + .checkbox:after {
         background: white;
         border-radius: 28px;
@@ -323,46 +345,50 @@ button, input[type="submit"] {
         -webkit-transition: all 0.3s ease;
         -moz-transition: all 0.3s ease;
         transition: all 0.3s ease; }
-    /* line 64, /Users/maerch/Git/boids/app/sass/switch */
+    /* line 64, /Users/maerch/Git/voids/app/sass/switch.scss */
     .label-switch input[type="checkbox"]:checked + .checkbox {
       background: #477DCA; }
-      /* line 67, /Users/maerch/Git/boids/app/sass/switch */
+      /* line 67, /Users/maerch/Git/voids/app/sass/switch.scss */
       .label-switch input[type="checkbox"]:checked + .checkbox:before {
         -webkit-transform: scale(0);
         -moz-transform: scale(0);
         -ms-transform: scale(0);
         -o-transform: scale(0);
         transform: scale(0); }
-      /* line 71, /Users/maerch/Git/boids/app/sass/switch */
+      /* line 71, /Users/maerch/Git/voids/app/sass/switch.scss */
       .label-switch input[type="checkbox"]:checked + .checkbox:after {
         left: 22px; }
 
-/* line 80, /Users/maerch/Git/boids/app/sass/switch */
+/* line 80, /Users/maerch/Git/voids/app/sass/switch.scss */
 #cohesion:checked + .checkbox {
-  background-color: #f5f100; }
+  background-color: #f5f500; }
 
-/* line 86, /Users/maerch/Git/boids/app/sass/switch */
+/* line 86, /Users/maerch/Git/voids/app/sass/switch.scss */
 #separation:checked + .checkbox {
   background-color: #75f414; }
 
-/* line 92, /Users/maerch/Git/boids/app/sass/switch */
+/* line 92, /Users/maerch/Git/voids/app/sass/switch.scss */
 #alignment:checked + .checkbox {
-  background-color: #4dc1ff; }
+  background-color: #4ebfff; }
 
-/* line 98, /Users/maerch/Git/boids/app/sass/switch */
+/* line 98, /Users/maerch/Git/voids/app/sass/switch.scss */
 #predators:checked + .checkbox {
   background-color: #990000; }
 
-/* line 104, /Users/maerch/Git/boids/app/sass/switch */
+/* line 104, /Users/maerch/Git/voids/app/sass/switch.scss */
 #food:checked + .checkbox {
   background-color: #BFFF00; }
 
-/* line 18, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 18, /Users/maerch/Git/voids/app/sass/styles.sass */
 body {
   font-family: 'Share Tech Mono';
   background-color: black; }
 
-/* line 22, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 22, /Users/maerch/Git/voids/app/sass/styles.sass */
+canvas {
+  transform: translateZ(0); }
+
+/* line 25, /Users/maerch/Git/voids/app/sass/styles.sass */
 #slide-controls {
   background-color: rgba(255, 0, 102, 0.8);
   color: white;
@@ -376,17 +402,17 @@ body {
   -webkit-transition: all 300ms;
   transition: all 300ms;
   box-shadow: 0px 0px 15px 4px rgba(255, 0, 102, 0.5); }
-  /* line 36, /Users/maerch/Git/boids/app/sass/styles.sass */
+  /* line 39, /Users/maerch/Git/voids/app/sass/styles.sass */
   #slide-controls h1, #slide-controls h3 {
     font-family: 'Share Tech Mono';
     width: 100%;
     text-align: center; }
 
-/* line 41, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 44, /Users/maerch/Git/voids/app/sass/styles.sass */
 body.active #slide-controls {
   left: 0px; }
 
-/* line 44, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 47, /Users/maerch/Git/voids/app/sass/styles.sass */
 .trigger {
   width: 20px;
   text-align: center;
@@ -401,46 +427,46 @@ body.active #slide-controls {
   transition: all 300ms;
   background: #FF0066;
   box-shadow: 0px 0px 15px 4px rgba(255, 0, 102, 0.5); }
-  /* line 61, /Users/maerch/Git/boids/app/sass/styles.sass */
+  /* line 64, /Users/maerch/Git/voids/app/sass/styles.sass */
   .trigger:hover {
     background: #e6005c; }
 
-/* line 64, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 67, /Users/maerch/Git/voids/app/sass/styles.sass */
 #menu-trigger {
   left: 10px; }
 
-/* line 67, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 70, /Users/maerch/Git/voids/app/sass/styles.sass */
 body.active #menu-trigger {
   left: 310px; }
 
-/* line 70, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 73, /Users/maerch/Git/voids/app/sass/styles.sass */
 #pause-trigger {
   left: 60px; }
 
-/* line 73, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 76, /Users/maerch/Git/voids/app/sass/styles.sass */
 body.active #pause-trigger {
   left: 360px; }
 
-/* line 76, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 79, /Users/maerch/Git/voids/app/sass/styles.sass */
 #tracking-trigger {
   left: 110px; }
 
-/* line 79, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 82, /Users/maerch/Git/voids/app/sass/styles.sass */
 body.active #tracking-trigger {
   left: 410px; }
 
-/* line 83, /Users/maerch/Git/boids/app/sass/styles.sass */
+/* line 86, /Users/maerch/Git/voids/app/sass/styles.sass */
 .rules {
   margin-top: 50px; }
-  /* line 86, /Users/maerch/Git/boids/app/sass/styles.sass */
+  /* line 89, /Users/maerch/Git/voids/app/sass/styles.sass */
   .rules table td {
     border: none; }
-    /* line 88, /Users/maerch/Git/boids/app/sass/styles.sass */
+    /* line 91, /Users/maerch/Git/voids/app/sass/styles.sass */
     .rules table td.switch {
       width: 33%;
       text-align: right;
       padding: 5px; }
-    /* line 92, /Users/maerch/Git/boids/app/sass/styles.sass */
+    /* line 95, /Users/maerch/Git/voids/app/sass/styles.sass */
     .rules table td.label {
       text-align: left;
       padding: 5px; }
